@@ -1,0 +1,5 @@
+- Eventos (Nome, OS, criado em, criado por, status)
+	- Ativos (*Nome, nº patrimônio, Criado por, Evento, Sala, Status)
+	- Salas (nome)
+	- Acessórios
+- Clientes (Nome, contato, criado em, criado por, Evento)
