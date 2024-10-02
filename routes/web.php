@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\CustomerController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\EventController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\EquipmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +36,10 @@ Route::post('/customers', [CustomerController::class, 'store'])->name('customers
 Route::get('/events', [EventController::class, 'index'])->name('events')->middleware(['auth', 'verified']);
 Route::get('/events/create', [EventController::class, 'create'])->name('events.create')->middleware(['auth', 'verified']);
 Route::post('/events', [EventController::class, 'store'])->name('events.store')->middleware(['auth', 'verified']);
+
+Route::get('/equipments', [EquipmentController::class, 'index'])->name('equipments')->middleware(['auth', 'verified']);
+Route::get('/equipments/create', [EquipmentController::class, 'create'])->name('equipments.create')->middleware(['auth', 'verified']);
+Route::post('/equipments', [EquipmentController::class, 'store'])->name('equipments.store')->middleware(['auth', 'verified']);
 
 
 

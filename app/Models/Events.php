@@ -23,4 +23,9 @@ class Events extends Model
         return $this->hasMany(Rooms::class);
     }
 
+    public function equipments()
+    {
+        return $this->hasMany(Equipments::class);
+    }
+
 }

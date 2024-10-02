@@ -13,10 +13,20 @@ class Equipments extends Model
         'name',
         'description',
         'image',
+        'provider',
+        'model',
+        'serial_number',
+        'status',
+        'type',
     ];
 
     public function Customers()
     {
-        return $this->belongsToMany(Customer::class);
+        return $this->belongsToMany(Customers::class);
+    }
+
+    public function Events()
+    {
+        return $this->belongsToMany(Events::class);
     }
 }

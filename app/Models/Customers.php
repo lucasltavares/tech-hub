@@ -14,4 +14,17 @@ class Customers extends Model
         'email',
         'phone',
     ];
+
+
+    public function Events()
+    {
+        return $this->hasMany(Events::class);
+    }
+
+    public function Equipments()
+    {
+        return $this->hasMany(Equipments::class);
+    }
 }
+
+

@@ -1,42 +1,57 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Criar evento') }}
+            {{ __('Cadastrar Equipamento') }}
         </h2>
     </x-slot>
 
     <div class="bg-gray-100 flex items-center justify-center min-h-screen">
         <div class="w-full max-w-md">
-            <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" action="{{ route('events.store') }}" method="post">
+            <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" action="{{ route('equipments.store') }}" method="post">
                 @csrf
-                <h2 class="text-2xl font-bold text-gray-700 mb-6 text-center">Cadastro de Evento</h2>
+                <h2 class="text-2xl font-bold text-gray-700 mb-6 text-center">Cadastro de Equipamento</h2>
 
                 <div class="mb-4">
-                    <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
-                        Nome
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="type">
+                        Tipo
                     </label>
-                    <input name="name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" type="text" placeholder="Seu nome">
+                    <input name="type" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" type="text" placeholder="Seu nome">
                 </div>
 
                 <div class="mb-4">
-                    <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="description">
                         Descrição
                     </label>
                     <input name="description" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="text" placeholder="Seu email">
                 </div>
 
                 <div class="mb-4">
-                    <label class="block text-gray-700 text-sm font-bold mb-2" for="phone">
-                        Local
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="image">
+                        Imagem
                     </label>
-                    <input name="location" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="phone" type="tel" placeholder="Seu telefone">
+                    <input name="image" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="image" type="file" accept="image/*">
+                </div>
+
+
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="provider">
+                        Fornecedor
+                    </label>
+                    <input name="provider" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="phone" type="tel" placeholder="Seu telefone">
                 </div>
 
                 <div class="mb-4">
-                    <label class="block text-gray-700 text-sm font-bold mb-2" for="phone">
-                        Salas
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="model">
+                        Modelo
                     </label>
-                    <input name="rooms" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="phone" type="tel" placeholder="Seu telefone">
+                    <input name="model" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="phone" type="tel" placeholder="Seu telefone">
+                </div>
+
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="serial_number">
+                        Número de série
+                    </label>
+                    <input name="serial_number" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="phone" type="tel" placeholder="Seu telefone">
                 </div>
 
                 <div class="flex items-center justify-between">
