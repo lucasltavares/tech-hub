@@ -17,11 +17,10 @@
                 <thead>
                     <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
                         <th class="py-3 px-6 text-left">Name</th>
-                        <th class="py-3 px-6 text-left">Position</th>
-                        <th class="py-3 px-6 text-center">Office</th>
-                        <th class="py-3 px-6 text-center">Age</th>
-                        <th class="py-3 px-6 text-center">Start date</th>
-                        <th class="py-3 px-6 text-center">Salary</th>
+                        <th class="py-3 px-6 text-left">Segment</th>
+                        <th class="py-3 px-6 text-center">Email</th>
+                        <th class="py-3 px-6 text-center">Register date</th>
+                        <th class="py-3 px-6 text-center">Plan</th>
                     </tr>
                 </thead>
                 <tbody class="text-gray-600 text-sm font-light">
@@ -34,13 +33,12 @@
                         </td>
                         <td class="py-3 px-6 text-left">
                             <div class="flex items-center">
-                                <span>Software Engineer</span>
+                                <span>{{ $customer->segment }}</span>
                             </div>
                         </td>
-                        <td class="py-3 px-6 text-center">New York</td>
-                        <td class="py-3 px-6 text-center">29</td>
-                        <td class="py-3 px-6 text-center">2019-04-12</td>
-                        <td class="py-3 px-6 text-center">$120,000</td>
+                        <td class="py-3 px-6 text-center">{{ $customer->email }}</td>
+                        <td class="py-3 px-6 text-center">{{ $customer->created_at }}</td>
+                        <td class="py-3 px-6 text-center">{{ $customer->plan }}</td>
                     </tr>
                     @endforeach
                 </tbody>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Customers;
+use Carbon\Carbon;
 
 class CustomerController extends Controller
 {
@@ -21,7 +22,10 @@ class CustomerController extends Controller
 
     public function store(Request $request)
     {
-       Customers::create($request->all());
+       $customer = Customers::create($request->all());
+
+       $customer->register_date = Carbon::now();
+       $customer->save();
 
         return redirect()->route('customers');
     }
