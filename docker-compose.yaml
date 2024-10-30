@@ -32,6 +32,7 @@ services:
     depends_on:
       - mariadb
     restart: always
+    command: /bin/sh -c "cp .env.example .env && php artisan key:generate && composer install && php artisan serve --host=0.0.0.0 --port=8000 & npm install && npm run dev"
 
 volumes:
   mariadb_data:
