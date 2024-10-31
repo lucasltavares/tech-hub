@@ -5,6 +5,7 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\EquipmentController;
+use App\Http\Controllers\RoomController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +41,8 @@ Route::post('/events', [EventController::class, 'store'])->name('events.store')-
 Route::get('/equipments', [EquipmentController::class, 'index'])->name('equipments')->middleware(['auth', 'verified']);
 Route::get('/equipments/create', [EquipmentController::class, 'create'])->name('equipments.create')->middleware(['auth', 'verified']);
 Route::post('/equipments', [EquipmentController::class, 'store'])->name('equipments.store')->middleware(['auth', 'verified']);
+
+Route::get('/rooms/{eventId}', [RoomController::class, 'index'])->name('rooms')->middleware(['auth', 'verified']);
 
 
 

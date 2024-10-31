@@ -22,8 +22,18 @@ class EventController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+
         $data['user_id'] = auth()->id();
-        Events::create($data);
+
+        $event = Events::create($data);
+
+        for ($i = 1; $i <= $event->rooms; $i++) {
+            $event->rooms()->create([
+                'number' => $i,
+                'description' => 'Sala ' . $i . ' de ' . $event->name,
+            ]);
+        }
+
         return redirect('/events');
     }
 }
