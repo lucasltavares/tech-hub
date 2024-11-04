@@ -25,8 +25,8 @@ class Equipments extends Model
         return $this->belongsToMany(Customers::class);
     }
 
-    public function Events()
+    public function Rooms()
     {
-        return $this->belongsToMany(Events::class);
+        return $this->belongsTo(Rooms::class);
     }
 }

@@ -9,7 +9,9 @@ use Illuminate\Http\Request;
 class EquipmentController extends Controller
 {
     public function index() {
-        $equipments = Equipments::all();
+        $equipments = Equipments::with('Rooms')->get();
+
+        //dd($equipments);
 
         return view('equipments.index')->with('equipments', $equipments);
     }
