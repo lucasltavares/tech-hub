@@ -20,9 +20,9 @@ class Equipments extends Model
         'type',
     ];
 
-    public function Customers()
+    public function Events()
     {
-        return $this->belongsToMany(Customers::class);
+        return $this->belongsTo(Events::class);
     }
 
     public function Rooms()
