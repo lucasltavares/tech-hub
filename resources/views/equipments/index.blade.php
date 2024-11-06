@@ -122,8 +122,12 @@
                                 </div>
 
                                 <div class="mb-4">
-                                    <label for="sala" class="block text-sm font-medium text-gray-700">Evento</label>
-                                    <input type="text" id="sala" name="sala" value="{{ old('sala', $equipment->rooms_id ? $equipment->name : 'oi') }}" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                                    <label for="evento" class="block text-sm font-medium text-gray-700">Evento</label>
+                                    <select id="evento" name="evento" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                                        @foreach ($events as $event)
+                                            <option value="{{ $event->id }}">{{ $event->name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
 
                                 <div class="mb-4">

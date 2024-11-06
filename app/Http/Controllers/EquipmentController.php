@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Events;
 use App\Models\Equipments;
 use Illuminate\Http\Request;
 
@@ -11,9 +12,11 @@ class EquipmentController extends Controller
     public function index() {
         $equipments = Equipments::with('Rooms')->get();
 
-        //dd($equipments);
+        $events = Events::where('is_active', 1)->get();
 
-        return view('equipments.index')->with('equipments', $equipments);
+        return view('equipments.index')
+            ->with('equipments', $equipments)
+            ->with('events', $events);
     }
 
     public function create()
