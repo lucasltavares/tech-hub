@@ -20,6 +20,10 @@ class Equipments extends Model
         'type',
     ];
 
+    protected $attributes = [
+        'events_id' => null
+    ];
+
     public function Events()
     {
         return $this->belongsTo(Events::class);

@@ -13,6 +13,7 @@
                     Cadastrar Equipamento
                 </a>
             </div>
+            @if (isset($equipments) && !$equipments->isEmpty())
             <table class="min-w-full bg-white border border-gray-200 rounded-lg shadow-lg">
                 <thead>
                     <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
@@ -66,7 +67,7 @@
                         </td>
                         <td class="py-3 px-6 text-left whitespace-nowrap">
                             <div class="flex items-center">
-                               <a href="#" @click="open = true"> 
+                               <a href="#" @click="open = true">
                                     <span class="font-medium">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                                             <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
@@ -132,7 +133,11 @@
 
                                 <div class="mb-4">
                                     <label for="sala" class="block text-sm font-medium text-gray-700">Sala</label>
-                                    <input type="text" id="sala" name="sala" value="{{ old('sala', $equipment->rooms_id) }}" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                                    <select id="sala" name="sala" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                                        @foreach ($events as $event)
+                                            <option value="{{ $event->id }}">{{ $event->name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
 
                                 <!-- Botões de ação -->
@@ -145,6 +150,19 @@
                     </div>
                 </tbody>
             </table>
+            @else
+            <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
+                <div class="max-w-xl">
+                    <div class="flex items-center">
+                        <div class="ml-3">
+                            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+                                Nenhum equipamento encontrado
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endif
         </div>
     </div>
     </div>
