@@ -16,4 +16,5 @@ class RoomController extends Controller
 
         return view('rooms.index')->with('rooms', $rooms)->with('event', $event);
     }
+
 }

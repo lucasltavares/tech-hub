@@ -79,7 +79,7 @@
                     </tr>
                     @endforeach
                     <!-- Modal -->
-                    <div x-show="open" class="fixed inset-0 z-50 flex items-center justify-center bg-gray-900 bg-opacity-50">
+                    <div x-data="eventRooms()" x-show="open" class="fixed inset-0 z-50 flex items-center justify-center bg-gray-900 bg-opacity-50">
                         <div class="bg-white rounded-lg shadow-lg w-full max-w-lg p-6">
                             <!-- Cabeçalho do modal -->
                             <div class="flex justify-between items-center mb-4">
@@ -124,19 +124,20 @@
 
                                 <div class="mb-4">
                                     <label for="evento" class="block text-sm font-medium text-gray-700">Evento</label>
-                                    <select id="evento" name="evento" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                                    <select x-model="eventId" @change="fetchRooms()" id="evento" name="evento" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
                                         @foreach ($events as $event)
                                             <option value="{{ $event->id }}">{{ $event->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
 
-                                <div class="mb-4">
+                                <div x-show="eventId" class="mb-4">
                                     <label for="sala" class="block text-sm font-medium text-gray-700">Sala</label>
                                     <select id="sala" name="sala" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
-                                        @foreach ($events as $event)
-                                            <option value="{{ $event->id }}">{{ $event->name }}</option>
-                                        @endforeach
+                                        <option value="">Selecione uma sala</option>
+                                        <template x-for="room in rooms" :key="room.id">
+                                            <option :value="room.id" x-text="room.description"></option>
+                                        </template>
                                     </select>
                                 </div>
 
@@ -166,4 +167,30 @@
         </div>
     </div>
     </div>
+    <script defer>
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('eventRooms', () => ({
+                eventId: '',
+                rooms: [],
+
+                // Função para buscar salas via API
+                fetchRooms() {
+                    if (this.eventId) {
+                        fetch(`/events/${this.eventId}/rooms`)
+                            .then(response => response.json())
+                            .then(data => {
+                                console.log(data);
+                                this.rooms = data; // Atualiza a lista de salas
+                                console.log(this.rooms);
+                            })
+                            .catch(error => {
+                                console.error('Erro ao carregar as salas:', error);
+                            });
+                    } else {
+                        this.rooms = []; // Reseta o select de salas quando não há evento selecionado
+                    }
+                }
+            }));
+        });
+    </script>
 </x-app-layout>

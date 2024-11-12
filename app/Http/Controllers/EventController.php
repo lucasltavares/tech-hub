@@ -36,4 +36,9 @@ class EventController extends Controller
 
         return redirect('/events');
     }
+
+    public function getRooms(Events $eventId)   
+    {
+        return response()->json($eventId->rooms()->get());  
+    }
 }
