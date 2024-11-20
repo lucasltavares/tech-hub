@@ -18,6 +18,8 @@ class Equipments extends Model
         'serial_number',
         'status',
         'type',
+        'events_id',
+        'rooms_id'
     ];
 
     protected $attributes = [

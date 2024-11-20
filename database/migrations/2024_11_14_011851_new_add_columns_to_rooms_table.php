@@ -14,8 +14,6 @@ return new class extends Migration
         Schema::table('rooms', function (Blueprint $table) {
             $table->integer('number')->nullable();
             $table->string('description')->nullable();
-            $table->unsignedBigInteger('event_id')->nullable();
-            $table->foreign('event_id')->references('id')->on('events');
         });
     }
 
@@ -27,7 +25,6 @@ return new class extends Migration
         Schema::table('rooms', function (Blueprint $table) {
             $table->dropColumn('number');
             $table->dropColumn('description');
-            $table->dropColumn('event_id');
         });
     }
 };
