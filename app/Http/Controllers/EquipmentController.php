@@ -38,10 +38,12 @@ class EquipmentController extends Controller
 
     public function update(Request $request, int $id): RedirectResponse
     {
+
+        //dd($request->all());
         $equipment = Equipments::find($id);
 
         if (!$equipment) {
-            abort(404);
+           abort(404);
         }
 
         $equipment->update($request->all());

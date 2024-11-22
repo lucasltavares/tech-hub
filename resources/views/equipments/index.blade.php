@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    <div class="py-12" x-data="{ open: false }">
+    <div class="py-12" x-data="Equipments()">
         <div class="container mx-auto p-4">
         <div class="overflow-x-auto">
             <div class="flex justify-end p-4">
@@ -67,7 +67,7 @@
                         </td>
                         <td class="py-3 px-6 text-left whitespace-nowrap">
                             <div class="flex items-center">
-                               <a href="#" @click="open = true">
+                               <a href="#" @click="openModal({{ json_encode($equipment) }})">
                                     <span class="font-medium">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                                             <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
@@ -79,7 +79,7 @@
                     </tr>
                     @endforeach
                     <!-- Modal -->
-                    <div x-data="eventRooms()" x-show="open" class="fixed inset-0 z-50 flex items-center justify-center bg-gray-900 bg-opacity-50">
+                    <div x-show="open" x-transition class="modal fixed inset-0 z-50 flex items-center justify-center bg-gray-900 bg-opacity-50">
                         <div class="bg-white rounded-lg shadow-lg w-full max-w-lg p-6">
                             <!-- Cabeçalho do modal -->
                             <div class="flex justify-between items-center mb-4">
@@ -88,43 +88,43 @@
                             </div>
 
                             <!-- Formulário de Edição -->
-                            <form action="{{ route('equipments.update', $equipment->id) }}" method="POST">
+                            <form x-bind:action="`/equipments/update/${equipment.id}`" method="POST">
                                 @csrf
                                 @method('PUT')
 
                                 <div class="mb-4">
                                     <label for="nome" class="block text-sm font-medium text-gray-700">Nome</label>
-                                    <input type="text" id="nome" name="nome" value="{{ old('nome', $equipment->name) }}" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                                    <input x-model="equipment.name" type="text" id="name" name="name" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
                                 </div>
 
                                 <div class="mb-4">
                                     <label for="tipo" class="block text-sm font-medium text-gray-700">Tipo</label>
-                                    <input type="text" id="tipo" name="tipo" value="{{ old('tipo', $equipment->type) }}" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                                    <input x-model="equipment.type" type="text" id="type" name="type" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
                                 </div>
 
                                 <div class="mb-4">
                                     <label for="modelo" class="block text-sm font-medium text-gray-700">Modelo</label>
-                                    <input type="text" id="modelo" name="modelo" value="{{ old('modelo', $equipment->model) }}" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                                    <input x-model="equipment.model" type="text" id="model" name="model" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
                                 </div>
 
                                 <div class="mb-4">
                                     <label for="numero_serie" class="block text-sm font-medium text-gray-700">Nº de Série</label>
-                                    <input type="text" id="numero_serie" name="numero_serie" value="{{ old('numero_serie', $equipment->serial_number) }}" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                                    <input x-model="equipment.serial_number" type="text" id="serial_number" name="serial_number" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
                                 </div>
 
                                 <div class="mb-4">
                                     <label for="descricao" class="block text-sm font-medium text-gray-700">Descrição</label>
-                                    <textarea id="descricao" name="descricao" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">{{ old('descricao', $equipment->description) }}</textarea>
+                                    <textarea x-model="equipment.description" id="description" name="description" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"></textarea>
                                 </div>
 
                                 <div class="mb-4">
                                     <label for="fornecedor" class="block text-sm font-medium text-gray-700">Fornecedor</label>
-                                    <input type="text" id="fornecedor" name="fornecedor" value="{{ old('fornecedor', $equipment->provider) }}" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                                    <input x-model="equipment.provider" type="text" id="provider" name="provider" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
                                 </div>
 
                                 <div class="mb-4">
                                     <label for="evento" class="block text-sm font-medium text-gray-700">Evento</label>
-                                    <select x-model="eventId" @change="fetchRooms()" id="evento" name="evento" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                                    <select x-model="eventId" @change="fetchRooms()" id="evento" name="events_id" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
                                         @foreach ($events as $event)
                                             <option value="{{ $event->id }}">{{ $event->name }}</option>
                                         @endforeach
@@ -132,8 +132,8 @@
                                 </div>
 
                                 <div x-show="eventId" class="mb-4">
-                                    <label for="sala" class="block text-sm font-medium text-gray-700">Sala</label>
-                                    <select id="sala" name="sala" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                                    <label for="room" class="block text-sm font-medium text-gray-700">Sala</label>
+                                    <select id="room" name="rooms_id" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
                                         <option value="">Selecione uma sala</option>
                                         <template x-for="room in rooms" :key="room.id">
                                             <option :value="room.id" x-text="room.description"></option>
@@ -169,10 +169,16 @@
     </div>
     <script defer>
         document.addEventListener('alpine:init', () => {
-            Alpine.data('eventRooms', () => ({
+            Alpine.data('Equipments', () => ({
                 eventId: '',
+                equipment: '',
                 rooms: [],
+                open: false,
 
+                openModal(equipment) {
+                     this.open = true;
+                     this.equipment = equipment;
+                },
                 // Função para buscar salas via API
                 fetchRooms() {
                     if (this.eventId) {

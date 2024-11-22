@@ -41,7 +41,7 @@ Route::get('/events/{eventId}/rooms', [EventController::class, 'getRooms'])->mid
 
 Route::get('/equipments', [EquipmentController::class, 'index'])->name('equipments')->middleware(['auth', 'verified']);
 Route::get('/equipments/create', [EquipmentController::class, 'create'])->name('equipments.create')->middleware(['auth', 'verified']);
-Route::get('/equipments/update', [EquipmentController::class, 'update'])->name('equipments.update')->middleware(['auth', 'verified']);
+Route::put('/equipments/update/{id}', [EquipmentController::class, 'update'])->name('equipments.update')->middleware(['auth', 'verified']);
 Route::post('/equipments', [EquipmentController::class, 'store'])->name('equipments.store')->middleware(['auth', 'verified']);
 
 Route::get('/rooms/{eventId}', [RoomController::class, 'index'])->name('rooms')->middleware(['auth', 'verified']);
