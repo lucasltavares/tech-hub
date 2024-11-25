@@ -1,4 +1,9 @@
 FROM richarvey/nginx-php-fpm:latest
+# Certifique-se de que o sistema está pronto para instalar pacotes
+USER root
+RUN apk update && \
+    apk add --no-cache curl nodejs npm && \
+    npm install -g npm@latest
 COPY . .
 # Image config
 ENV SKIP_COMPOSER 1
@@ -12,11 +17,4 @@ ENV APP_DEBUG false
 ENV LOG_CHANNEL stderr
 # Allow composer to run as root
 ENV COMPOSER_ALLOW_SUPERUSER 1
-# Instala Node.js e npm
-RUN apt-get update && \
-    apt-get install -y curl && \
-    curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
-    apt-get install -y nodejs && \
-    npm install -g npm@latest
-
 CMD ["/start.sh"]
