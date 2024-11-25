@@ -6,5 +6,9 @@ echo "Caching config..."
 php artisan config:cache
 echo "Caching routes..."
 php artisan route:cache
+echo "Running npm install..."
+npm install
+echo "Running npm build..."
+npm run build
 echo "Running migrations..."
 php artisan migrate --force
