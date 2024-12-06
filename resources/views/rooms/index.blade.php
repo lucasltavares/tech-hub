@@ -28,7 +28,19 @@
             @if (isset($room->equipments) && !$room->equipments->isEmpty())
             <div x-show="isOpen" class="mt-2 space-y-1">
                 <div class="flex items-center text-gray-700">
-                <span class="mr-2">💻</span> {{ $equipment->name }}
+                  @if ($equipment->type == 'Monitor')
+                    <span class="mr-2">🖥️</span> {{ $equipment->name }}
+                  @elseif ($equipment->type == 'Notebook')
+                    <span class="mr-2">💻</span> {{ $equipment->name }}
+                  @elseif ($equipment->type == 'Impressora')
+                    <span class="mr-2">🖨️</span> {{ $equipment->name }}
+                  @elseif ($equipment->type == 'Scanner')
+                    <span class="mr-2">📷</span> {{ $equipment->name }}
+                  @elseif ($equipment->type == 'Caixa de Som')
+                    <span class="mr-2">📻</span> {{ $equipment->name }}
+                  @elseif ($equipment->type == 'Switch')
+                    <span class="mr-2">🛜</span> {{ $equipment->name }}
+                  @endif
                 </div>
             </div>
             @endif

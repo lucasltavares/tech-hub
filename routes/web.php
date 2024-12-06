@@ -33,6 +33,8 @@ Route::get('/customers/create', function () {
 })->middleware(['auth', 'verified'])->name('customers.create');
 
 Route::post('/customers', [CustomerController::class, 'store'])->name('customers.store')->middleware(['auth', 'verified']);
+Route::put('/customers/{id}', [CustomerController::class, 'update'])->name('customers.edit')->middleware(['auth', 'verified']);
+Route::delete('/customers/{id}', [CustomerController::class, 'detroy'])->name('customers.destroy')->middleware(['auth', 'verified']);
 
 Route::get('/events', [EventController::class, 'index'])->name('events')->middleware(['auth', 'verified']);
 Route::get('/events/create', [EventController::class, 'create'])->name('events.create')->middleware(['auth', 'verified']);
