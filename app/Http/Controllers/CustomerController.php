@@ -40,6 +40,7 @@ class CustomerController extends Controller
     public function update(Request $request, Customers $customer)
     {
         $customer->update($request->all());
-        //return redirect()->route('customers');
+
+        return redirect()->route('customers');       
     }
 }

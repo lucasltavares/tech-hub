@@ -89,20 +89,20 @@
 
                 <div class="mb-4">
                     <label for="tipo" class="block text-sm font-medium text-gray-700">Segmento</label>
-                    <input x-model="customer.segment" type="text" id="type" name="type" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                    <input x-model="customer.segment" type="text" id="segment" name="segment" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
                 </div>
 
                 <div class="mb-4">
-                    <label for="modelo" class="block text-sm font-medium text-gray-700">Email</label>
-                    <input x-model="customer.email" type="text" id="model" name="model" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                    <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                    <input x-model="customer.email" type="text" id="email" name="email" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
                 </div>
 
                 <div class="mb-4">
                     <label for="descricao" class="block text-sm font-medium text-gray-700">Plano</label>
                     <select
                         x-model="customer.plan"
-                        id="description"
-                        name="description"
+                        id="plan"
+                        name="plan"
                         class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
                     >
                         <option value="gold">Gold</option>
