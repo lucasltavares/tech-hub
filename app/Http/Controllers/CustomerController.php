@@ -11,7 +11,7 @@ class CustomerController extends Controller
     public function index()
     {
         $customers = Customers::all();
-        
+
 
         return view('customers.index')->with('customers', $customers);
     }
@@ -29,5 +29,17 @@ class CustomerController extends Controller
        $customer->save();
 
         return redirect()->route('customers');
+    }
+
+    public function destroy(Request $request, Customers $customer)
+    {
+        $customer->delete();
+        return redirect()->route('customers');
+    }
+
+    public function update(Request $request, Customers $customer)
+    {
+        $customer->update($request->all());
+        //return redirect()->route('customers');
     }
 }
