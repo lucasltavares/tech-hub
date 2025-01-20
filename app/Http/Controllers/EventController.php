@@ -37,8 +37,22 @@ class EventController extends Controller
         return redirect('/events');
     }
 
-    public function getRooms(Events $eventId)   
+    public function update(Request $request, Events $event)
     {
-        return response()->json($eventId->rooms()->get());  
+        $event->update($request->all());
+
+        return redirect('/events');
+    }
+
+    public function destroy(Events $event)
+    {
+        $event->delete();
+
+        return redirect('/events');
+    }
+
+    public function getRooms(Events $eventId)
+    {
+        return response()->json($eventId->rooms()->get());
     }
 }

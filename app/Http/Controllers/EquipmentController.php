@@ -38,8 +38,6 @@ class EquipmentController extends Controller
 
     public function update(Request $request, int $id): RedirectResponse
     {
-
-        //dd($request->all());
         $equipment = Equipments::find($id);
 
         if (!$equipment) {
@@ -47,6 +45,19 @@ class EquipmentController extends Controller
         }
 
         $equipment->update($request->all());
+
+        return redirect()->route('equipments');
+    }
+
+    public function destroy(int $id): RedirectResponse
+    {
+        $equipment = Equipments::find($id);
+
+        if (!$equipment) {
+            abort(404);
+        }
+
+        $equipment->delete();
 
         return redirect()->route('equipments');
     }

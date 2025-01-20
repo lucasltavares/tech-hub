@@ -6,6 +6,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\EquipmentController;
 use App\Http\Controllers\RoomController;
+use App\Http\Controllers\DashboardController;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,9 +24,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware(['auth', 'verified']);
 
 Route::get('/customers', [CustomerController::class, 'index'])->name('customers')->middleware(['auth', 'verified']);
 
@@ -40,11 +41,14 @@ Route::get('/events', [EventController::class, 'index'])->name('events')->middle
 Route::get('/events/create', [EventController::class, 'create'])->name('events.create')->middleware(['auth', 'verified']);
 Route::post('/events', [EventController::class, 'store'])->name('events.store')->middleware(['auth', 'verified']);
 Route::get('/events/{eventId}/rooms', [EventController::class, 'getRooms'])->middleware(['auth', 'verified']);
+Route::delete('/events/{event}', [EventController::class, 'destroy'])->name('events.destroy')->middleware(['auth', 'verified']);
+Route::put('/events/{event}', [EventController::class, 'update'])->name('events.update')->middleware(['auth', 'verified']);
 
 Route::get('/equipments', [EquipmentController::class, 'index'])->name('equipments')->middleware(['auth', 'verified']);
 Route::get('/equipments/create', [EquipmentController::class, 'create'])->name('equipments.create')->middleware(['auth', 'verified']);
 Route::put('/equipments/update/{id}', [EquipmentController::class, 'update'])->name('equipments.update')->middleware(['auth', 'verified']);
 Route::post('/equipments', [EquipmentController::class, 'store'])->name('equipments.store')->middleware(['auth', 'verified']);
+Route::delete('/equipments/{id}', [EquipmentController::class, 'destroy'])->name('equipments.destroy')->middleware(['auth', 'verified']);
 
 Route::get('/rooms/{eventId}', [RoomController::class, 'index'])->name('rooms')->middleware(['auth', 'verified']);
 

@@ -8,7 +8,7 @@
     <div class="py-12">
         <div class="container mx-auto p-4">
             <div class="min-h-screen flex flex-col">
-        
+
                 <!-- Main Content -->
                 <main class="flex-grow container mx-auto px-6 py-6">
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -16,7 +16,7 @@
                         <div class="bg-white shadow rounded-lg p-4 flex items-center justify-between">
                             <div>
                                 <h2 class="text-sm font-medium text-gray-600">Eventos Ativos</h2>
-                                <p class="text-2xl font-bold text-blue-500">12</p>
+                                <p class="text-2xl font-bold text-blue-500">{{ $events }}</p>
                             </div>
                             <div class="text-blue-500">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-10 h-10">
@@ -24,12 +24,12 @@
                                 </svg>
                             </div>
                         </div>
-        
+
                         <!-- Equipamentos em Uso -->
                         <div class="bg-white shadow rounded-lg p-4 flex items-center justify-between">
                             <div>
                                 <h2 class="text-sm font-medium text-gray-600">Equipamentos em Uso</h2>
-                                <p class="text-2xl font-bold text-green-500">45</p>
+                                <p class="text-2xl font-bold text-green-500">{{ $equipments }}</p>
                             </div>
                             <div class="text-green-500">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-10 h-10">
@@ -37,12 +37,12 @@
                                 </svg>
                             </div>
                         </div>
-        
+
                         <!-- Eventos Finalizados -->
                         <div class="bg-white shadow rounded-lg p-4 flex items-center justify-between">
                             <div>
                                 <h2 class="text-sm font-medium text-gray-600">Eventos Finalizados</h2>
-                                <p class="text-2xl font-bold text-yellow-500">34</p>
+                                <p class="text-2xl font-bold text-yellow-500">{{ $events }}</p>
                             </div>
                             <div class="text-yellow-500">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-10 h-10">
@@ -50,12 +50,12 @@
                                 </svg>
                             </div>
                         </div>
-        
+
                         <!-- Clientes Ativos -->
                         <div class="bg-white shadow rounded-lg p-4 flex items-center justify-between">
                             <div>
                                 <h2 class="text-sm font-medium text-gray-600">Clientes Ativos</h2>
-                                <p class="text-2xl font-bold text-purple-500">20</p>
+                                <p class="text-2xl font-bold text-purple-500">{{ $customers }}</p>
                             </div>
                             <div class="text-purple-500">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-10 h-10">
