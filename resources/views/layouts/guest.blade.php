@@ -18,7 +18,7 @@
         <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900">
             <div>
                 <a href="/">
-                    <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+                    <x-application-logo style="margin: 0 auto;" class="w-20 h-20 fill-current text-gray-500" /> <h1 style="color: midnightblue; text-align: center;font-size: 3em;font-family: monospace;font-weight: 600;">Tech Hub</h1>
                 </a>
             </div>
 
